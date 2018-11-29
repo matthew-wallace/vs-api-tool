@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 /*HANDLE POST REQUESTS */
-router.post('/', function(req, res, next){
+router.post('/', function(req, res){
   res.send('Hello World');
 }
 
