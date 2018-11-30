@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded({
 
 // handle a post request
 app.post('/',function(req,res){
+  console.log(req.body.email);
   res.send(req.body.email);
 });
 
