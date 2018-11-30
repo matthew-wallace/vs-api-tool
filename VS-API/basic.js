@@ -99,6 +99,7 @@ function makeTransaction(url_ext, msg, op, base_url){
           return 'Looks like there was a problem. Status Code: ' + code;
         }
     });
+    console.log(response);
     return response;
   }
 
