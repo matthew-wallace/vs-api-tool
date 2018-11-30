@@ -1,3 +1,5 @@
+var tools = require('authentication');
+
 /*
 
 getBaseUrl()
