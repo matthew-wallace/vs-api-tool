@@ -218,7 +218,7 @@ getUserById(
 
 */
 function getUserByEmail(email,distributor){
-  var attributes = {'filters':{'email':email};
+  var attributes = {'filters':{'email':email}};
   var users = findRecords('users',attributes,distributor);
   var user = users[0];
   return user;
@@ -228,7 +228,9 @@ function getUserByEmail(email,distributor){
   //public functions
   module.exports = {
     validateUser: function (email,distributor) {
+      console.log('The function has been called!');
       user = getUserByEmail(email,distributor);
+      console.log(user);
       if(user.type == 'account-users'){
         if(user.type.attributes['account-admin']){
           return true;
