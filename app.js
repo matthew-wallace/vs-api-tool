@@ -12,6 +12,21 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// set up bordy parser
+/** bodyParser.urlencoded(options)
+ * Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST)
+ * and exposes the resulting object (containing the keys and values) on req.body
+ */
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+/**bodyParser.json(options)
+ * Parses the text as JSON and exposes the resulting object on req.body.
+
+app.use(bodyParser.json());
+ */
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -24,19 +39,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-/** bodyParser.urlencoded(options)
- * Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST)
- * and exposes the resulting object (containing the keys and values) on req.body
- */
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-/**bodyParser.json(options)
- * Parses the text as JSON and exposes the resulting object on req.body.
- */
-app.use(bodyParser.json());
 
 // handle a post request
 app.post('/',function(req,res){
