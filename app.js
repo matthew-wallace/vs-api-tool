@@ -26,7 +26,7 @@ app.use('/users', usersRouter);
 
 // handle a post request
 app.post('/',function(req,res){
-  res.send(req);
+  res.send(req.body);
 });
 
 // catch 404 and forward to error handler
