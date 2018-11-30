@@ -77,8 +77,11 @@ function makeTransaction(url_ext, msg, op, base_url){
         }
       };
     }
-
+  
+  console.log(JSON.stringify(data));
+  
     var response = fetch(url, data).then(function(response){
+      console.log(response);
       var code = response.getResponseCode();
       if (code >= 200 && code<=300) {
         if (code == 201){
@@ -99,8 +102,6 @@ function makeTransaction(url_ext, msg, op, base_url){
           return 'Looks like there was a problem. Status Code: ' + code;
         }
     });
-    console.log(response);
-    return response;
   }
 
 /*
