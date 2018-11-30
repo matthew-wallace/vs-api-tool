@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var tools = require('./VS-API/basic');
 const fetch = require('node-fetch');
 
 var indexRouter = require('./routes/index');
@@ -25,7 +26,7 @@ app.use('/users', usersRouter);
 
 // handle a post request
 app.post('/',function(req,res){
-  res.send('Hello World!');
+  res.send(req);
 });
 
 // catch 404 and forward to error handler
