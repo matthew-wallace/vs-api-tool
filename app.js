@@ -42,8 +42,9 @@ app.use('/users', usersRouter);
 
 // handle a post request
 app.post('/',function(req,res){
-  console.log(req.body.email);
-  res.send(req.body.email);
+  var email = req.body.email;
+  var valid = tools.validateUser(email,'VeriSolutions');
+  res.send(valid);
 });
 
 // catch 404 and forward to error handler
