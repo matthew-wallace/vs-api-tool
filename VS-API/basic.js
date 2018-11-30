@@ -64,7 +64,7 @@ function makeTransaction(url_ext, msg, op, base_url){
       payload: msg,
       headers:{
         'Content-Type': 'application/vnd.api+json',
-        'Authorization': tools.authentication
+        'Authorization': tools.returnAuth
         }
       };
     }
@@ -73,7 +73,7 @@ function makeTransaction(url_ext, msg, op, base_url){
       method: op,
       headers:{
         'Content-Type': 'application/vnd.api+json',
-        'Authorization': tools.authentication
+        'Authorization': tools.returnAuth
         }
       };
     }
@@ -81,7 +81,7 @@ function makeTransaction(url_ext, msg, op, base_url){
   console.log(JSON.stringify(data));
   
     var response = fetch(url, data).then(function(response){
-      console.log(response);
+      console.log(JSON.stringify(response));
       var code = response.getResponseCode();
       if (code >= 200 && code<=300) {
         if (code == 201){
