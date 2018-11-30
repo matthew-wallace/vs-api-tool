@@ -51,9 +51,6 @@ Always Returns a promise so that asynchronus result may be returned:
 makeTransaction().then(function(var_name){HANDLE Returned API Object}).catch(function(var_name){HANDLE Error Message})
 
 */
-function returnAuth(){
-  return tools.authentication;
-}
 function makeTransaction(url_ext, msg, op, base_url){
 
   var url = base_url + url_ext;
@@ -67,7 +64,7 @@ function makeTransaction(url_ext, msg, op, base_url){
       payload: msg,
       headers:{
         'Content-Type': 'application/vnd.api+json',
-        'Authorization': returnAuth()
+        'Authorization': tools.authentication
         }
       };
     }
@@ -76,7 +73,7 @@ function makeTransaction(url_ext, msg, op, base_url){
       method: op,
       headers:{
         'Content-Type': 'application/vnd.api+json',
-        'Authorization': returnAuth()
+        'Authorization': tools.authentication
         }
       };
     }
