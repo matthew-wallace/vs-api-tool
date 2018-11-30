@@ -52,7 +52,7 @@ makeTransaction().then(function(var_name){HANDLE Returned API Object}).catch(fun
 
 */
 function returnAuth(){
-  return 'YOUR API KEY HERE';
+  return tools.authentication;
 }
 function makeTransaction(url_ext, msg, op, base_url){
 
