@@ -1,3 +1,5 @@
-function returnAuth(){
-  return 'YOUR API KEY HERE';
-}
+module.exports = {
+  returnAuth: function (){
+    return 'YOUR API KEY HERE';
+  }
+};
