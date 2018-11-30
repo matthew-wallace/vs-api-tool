@@ -78,26 +78,28 @@ function makeTransaction(url_ext, msg, op, base_url){
       };
     }
 
-    var response = fetch(url, data);
-    var code = response.getResponseCode();
-    if (code >= 200 && code<=300) {
-      if (code == 201){
-        console.log('Your object was created successfuly.');
-        return JSON.parse(response);
+    var response = fetch(url, data).then(function(response){
+      var code = response.getResponseCode();
+      if (code >= 200 && code<=300) {
+        if (code == 201){
+          console.log('Your object was created successfuly.');
+          return JSON.parse(response);
+        }
+        if(code == 200){
+          console.log('Your data has been retrieved.');
+          return JSON.parse(response);
+        }
+        if(code == 204){
+          console.log('Your object was deleted succesfully.');
+          return 'Your Item was Deleted.';
+        }
       }
-      if(code == 200){
-        console.log('Your data has been retrieved.');
-        return JSON.parse(response);
-      }
-      if(code == 204){
-        console.log('Your object was deleted succesfully.');
-        return 'Your Item was Deleted.';
-      }
-    }
-    else{
-        console.log('Looks like there was a problem. Status Code: ' + code);
-        return 'Looks like there was a problem. Status Code: ' + code;
-      }
+      else{
+          console.log('Looks like there was a problem. Status Code: ' + code);
+          return 'Looks like there was a problem. Status Code: ' + code;
+        }
+    });
+    return response;
   }
 
 /*
