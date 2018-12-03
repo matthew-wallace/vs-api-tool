@@ -60,6 +60,7 @@ app.get('/labels',function(req,res){
     if (err) return console.log(err);
     console.log(res); // { filename: '/app/businesscard.pdf' }
   });
+  res.status(200).send('http://vs-api-tool.appspot.com/labels/'+file_name+'.pdf');
 })
 
 // catch 404 and forward to error handler
