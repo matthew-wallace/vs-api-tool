@@ -6,6 +6,8 @@ var logger = require('morgan');
 var tools = require('./VS-API/basic');
 const fetch = require('node-fetch');
 const bodyParser = require("body-parser");
+const fs = require('fs');
+const pdf = require('html-pdf');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -40,12 +42,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// handle a post request
+//handle a post request
 app.post('/',function(req,res){
   var email = req.body.email;
   var valid = tools.validateUser(email,'VeriSolutions');
   res.send(valid);
 });
+
+//handle a post request for a label
+app.post('/labels',function(req,res){
+  var text = req.body.html;
+  var file_name = req.body.file_name;
+  var options = {format:'Letter'};
+  pdf.create(text, options).toFile('./'+file_name+'.pdf', function(err, res) {
+    if (err) return console.log(err);
+    console.log(res); // { filename: '/app/businesscard.pdf' }
+  });
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
