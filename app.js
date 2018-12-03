@@ -11,6 +11,7 @@ const pdf = require('html-pdf');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var labelsRouter = require('./routes/labels');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/labels',labelsRouter)
 
 //handle a post request
 app.post('/',function(req,res){
@@ -54,7 +56,7 @@ app.get('/labels',function(req,res){
   var text = req.query.text;
   var file_name = req.query.file_name;
   var options = {format:'Letter'};
-  pdf.create(text, options).toFile('./'+file_name+'.pdf', function(err, res) {
+  pdf.create(text, options).toFile('./labels/'+file_name+'.pdf', function(err, res) {
     if (err) return console.log(err);
     console.log(res); // { filename: '/app/businesscard.pdf' }
   });
