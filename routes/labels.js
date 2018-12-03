@@ -18,6 +18,7 @@ router.get('/:name', function (req, res, next) {
   };
 
   var fileName = req.params.name;
+  console.log(fileName);
   res.sendFile('../labels'+fileName, options, function (err) {
     if (err) {
       next(err);
