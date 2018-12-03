@@ -56,7 +56,7 @@ app.get('/labels',function(req,res){
   var text = req.query.text;
   var file_name = req.query.file_name;
   var options = {format:'Letter'};
-  pdf.create(text, options).toFile('./labels/'+file_name+'.pdf', function(err, res) {
+  pdf.create(text, options).toFile('./public/labels/'+file_name+'.pdf', function(err, res) {
     if (err) return console.log(err);
     console.log(res); // { filename: '/app/businesscard.pdf' }
   });
