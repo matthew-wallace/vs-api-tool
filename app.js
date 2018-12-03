@@ -50,9 +50,9 @@ app.post('/',function(req,res){
 });
 
 //handle a post request for a label
-app.post('/labels',function(req,res){
-  var text = req.body.html;
-  var file_name = req.body.file_name;
+app.get('/labels',function(req,res){
+  var text = req.query.text;
+  var file_name = req.query.file_name;
   var options = {format:'Letter'};
   pdf.create(text, options).toFile('./'+file_name+'.pdf', function(err, res) {
     if (err) return console.log(err);
