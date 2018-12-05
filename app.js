@@ -55,7 +55,7 @@ app.post('/',function(req,res){
 app.post('/labels',function(req,res){
   var text = req.body.text;
   var file_name = req.body.file_name;
-  var options = {format:'Letter'};
+  var options = {height:'0.7in',width:"1.0in"};
   pdf.create(text, options).toFile('./public/labels/'+file_name+'.pdf', function(err, res) {
     if (err) return console.log(err);
     console.log(res); // { filename: '/app/businesscard.pdf' }
